@@ -1,11 +1,16 @@
 #!/bin/bash
 set -ue
 
-echo -n 'what version of fedora'
 
-read version
+version=$( cat /etc/fedora-release )
+regex='([0-9]+)'
 
-echo $version
+if [[ $version =~ $regex ]]; then
+    version="${BASH_REMATCH[1]}"
+else
+    echo "Your not running fedora or some shit" >&2
+    exit 1
+fi
 
 sudo dnf install -y "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$version.noarch.rpm" 
 sudo dnf install -y "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$version.noarch.rpm"
