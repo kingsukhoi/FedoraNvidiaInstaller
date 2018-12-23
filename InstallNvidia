@@ -1,0 +1,18 @@
+#!/bin/bash
+set -ue
+
+echo -n 'what version of fedora'
+
+read version
+
+echo $version
+
+sudo dnf install -y "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$version.noarch.rpm" 
+sudo dnf install -y "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$version.noarch.rpm"
+
+sudo dnf update -y
+
+sudo dnf install -y xorg-x11-drv-nvidia akmod-nvidia
+sudo dnf install -y xorg-x11-drv-nvidia-cuda #optional for cuda/nvdec/nvenc support
+sudo dnf update -y
+
