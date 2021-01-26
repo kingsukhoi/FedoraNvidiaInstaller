@@ -11,4 +11,4 @@ It'll prompt you for you sudo password, but other than that it's all automated.
 
 # Tested
 
-Tested on Fedora 29 with a Nvidia GTX 660
+Tested on Fedora 33 with a Nvidia GTX 1080TI
